@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!--link rel="stylesheet" href="../static/css/bootstrap.min.css"-->
+</head>
+<body>
+    <div class="container">
+        <a href="logout">Выход</a>
+        <div class="col-6 mx-auto">
+            <div class="py-2">
+                <a th:href="@{search}" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Поиск договора(ов) страхования</a>
+            </div>
+            <div class="py-2">
+                <a th:href="@{policies/go}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Показать все договоры страхования</a>
+            </div>
+            <div class="py-2">
+                <a th:href="@{policies/gc}" class="btn btn-primary btn-lg btn-block disabled" role="button" aria-pressed="true">Показать все договоры страхования "Зеленая карта"</a>
+            </div>
+            <div class="py-2">
+                <a th:href="@{policies/go/create}" class="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Создать новый договор страхования</a>
+            </div>
+            <div class="py-2">
+                <a th:href="@{policies/gc/create}" class="btn btn-success btn-lg btn-block disabled" role="button" aria-pressed="true">Создать новый договор страхования "Зеленая карта"</a>
+            </div>
+            <div class="py-2">
+                <a th:href="@{users}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Пользователи</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

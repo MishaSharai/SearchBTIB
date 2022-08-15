@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новый договор страхования</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!--link rel="stylesheet" href="../static/css/bootstrap.min.css"-->
+</head>
+<body>
+<div class="container">
+    <a href="/index">Вернуться на главную страницу</a>
+    <form action="" method="post" th:object="${policy}">
+        <h3 class="row py-4 px-5">Обновление следующих данных...</h3>
+        <div class="row py-3 px-2 border">
+            <div class="col-4">
+                <label for="policyNum">Номер полиса:</label>
+                <input class="form-control" id="policyNum" type="text" name="policyNum" readonly th:field="*{policyNum}">
+                <label for="company">Компания:</label>
+                <input class="form-control" id="company" type="text" name="company" th:field="*{company}">
+                <label for="dateBeg">Дата начала действия:</label>
+                <input class="form-control" id="dateBeg" type="date" name="dateBeg" th:field="*{dateBeg}">
+                <label for="dateEnd">Дата окончания:</label>
+                <input class="form-control" id="dateEnd" type="date" name="dateEnd" th:field="*{dateEnd}">
+            </div>
+            <div class="col-4">
+                <label for="insuredId">Личный номер:</label>
+                <input class="form-control" id="insuredId" type="text" name="insuredId" th:field="*{insuredId}">
+                <label for="insuredName">Страхователь:</label>
+                <input class="form-control" id="insuredName" type="text" name="insuredName" th:field="*{insuredName}">
+                <label for="insuredAddress">Адрес страхователя:</label>
+                <input class="form-control" id="insuredAddress" type="text" name="insuredAddress" th:field="*{insuredAddress}">
+            </div>
+            <div class="col-4">
+                <label for="bodyNo">Идентификационный номер кузова(рамы/шасси):</label>
+                <input class="form-control" id="bodyNo" type="text" name="bodyNo" maxlength="17" th:field="*{bodyNo}">
+                <label for="vehType">Тип ТС:</label>
+                <select class="form-control" id="vehType" name="vehType" th:field="*{vehType}">
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="A3">A3</option>
+                    <option value="A4">A4</option>
+                    <option value="A5">A5</option>
+                    <option value="A6">A6 - такси</option>
+                </select>
+                <label for="vehPassport">Марка и модель ТС:</label>
+                <input class="form-control" id="vehPassport" type="text" name="vehPassport" th:field="*{vehPassport}">
+                <label for="vehSign">Регистрационный знак ТС:</label>
+                <input class="form-control" id="vehSign" type="text" name="vehSign" th:field="*{vehSign}">
+            </div>
+        </div>
+        <div class="row py-3 text-center">
+            <div class="col">
+                <button type="submit" class="btn btn-dark" style="width: 300px;">Обновить договор</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

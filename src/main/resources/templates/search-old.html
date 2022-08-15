@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск информации</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<form action="" method="post">
+    <div class="search">
+        <div class="quick-search">
+            <h4>Быстрый поиск</h4>
+            <label>Номер договора:</label>
+            <input type="text" placeholder=""><br>
+            <label>Имя страхователя:</label>
+            <input type="text"><br>
+            <label>Регистрационный знак:</label>
+            <input type="text"><br>
+            <label>VIN / номер шасси(рамы):</label>
+            <input type="text">
+        </div>
+        <div class="extended-search">
+            <h4>Расширенный поиск</h4>
+            <textarea placeholder="Введите значение..."></textarea>
+        </div>
+        <div class="options-search">
+            <h5>Параметры поиска</h5>
+            <label>Что ищем:</label>
+            <input type="checkbox" name="checkGO">
+            <input type="checkbox" name="checkGC">
+            <input type="checkbox" name="checkGOSluch">
+            <input type="checkbox" name="checkGCSluch">
+            <div>
+                <label>Период отбора:</label>
+                <a>с </a><input type="date" value="2001-01-01" min="2001-01-01">
+                <a>по </a><input type="date" min="2001-01-01">
+            </div>
+            <label>Поиск по:</label>
+            <input type="checkbox" id="checkVehSign" name="check">
+            <label for="checkVehSign">рег. знакам</label>
+            <input type="checkbox" id="checkVin" name="check">
+            <label for="checkVin">VIN</label>
+            <input type="checkbox" id="checkName" name="check">
+            <label for="checkName">имени</label>
+        </div>
+    </div>
+    <br>
+    <button>Начать поиск</button>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск договоров страхования</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <!--link href="css/bootstrap.min.css" rel="stylesheet"-->
+</head>
+<body>
+    <div class="container">
+        <a href="/index">Вернуться на главную страницу</a>
+        <form action="searchGO" method="post">
+            <div class="row px-2 py-2" style="background-color: darkgray;">
+                <div class="col">
+                    <h6>Быстрый поиск</h6>
+                    <div class="row">
+                        <input class="form-control" id="policyNum" placeholder="Номер договора" maxlength="20">
+                    </div>
+                    <div class="row py-2">
+                        <input class="form-control" id="insuredName" name="insuredName" placeholder="Страхователь">
+                    </div>
+                    <div class="row">
+                        <input class="form-control" id="insuredId" placeholder="Идентификатор">
+                    </div>
+                    <div class="row py-2">
+                        <input class="form-control" id="vehSign" placeholder="Регистрационный знак">
+                    </div>
+                    <div class="row">
+                        <input class="form-control" id="bodyNo" placeholder="VIN" maxlength="17">
+                    </div>    
+                </div>
+                <div class="col">
+                    <h6>Расширенный поиск</h6>
+                    <textarea class="form-control" style="height: 220px; resize: none;" placeholder="Значения"></textarea>
+                </div>
+                <div class="col">
+                    <h6>Параметры поиска</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="radioGO" name="checkTypeOfPolicy" checked value="option1" >
+                        <label class="form-check-label" for="radioGO">Договоры страхования</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="radioGC" name="checkTypeOfPolicy" value="option2">
+                        <label class="form-check-label" for="radioGC">Зеленая карта</label>
+                    </div>
+                    <div class="form-check form-check-inline py-3">
+                        <input class="form-check-input" type="checkbox" id="checkCase" value="option3">
+                        <label class="form-check-label" for="checkCase">Страховой случай</label>
+                    </div>
+                    <div class="col-6">
+                        <label for="dateDistr1">Период заключения с</label>
+                        <input class="form-control" type="date" id="dateDistr1" name="dateDistr" min="2001-01-01" max="2099-12-31">
+                        <label for="dateDistr2">по</label>
+                        <input class="form-control" type="date" id="dateDistr2" name="dateDistr" min="2001-01-01" max="2099-12-31">
+                    </div>
+                </div>      
+            </div>
+            <div class="row py-3 text-center">
+                <div class="col">
+                    <button type="submit" class="btn btn-dark" style="width: 300px;">Поиск</button>
+                </div>
+            </div>
+            <div class="row">
+                <h5>Информация о договорах страхования (внутреннего/внутреннего комплексного/пограничного)</h5>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark text-center" style="vertical-align: middle;">
+                    <tr>
+                        <th rowspan="2" style="width: 50px">Номер строки</th>
+                        <th rowspan="2" style="width: 120px">Номер договора страхования</th>
+                        <th rowspan="2" style="width: 130px">Страховая компания</th>
+                        <th rowspan="2" style="width: 100px">Дата заключения</th>
+                        <th rowspan="2" style="width: 100px">Дата начала действия</th>
+                        <th rowspan="2" style="width: 100px">Дата окончания</th>
+                        <th rowspan="2" style="width: 100px">Дата закрытия</th>
+                        <th colspan="3">Страхователь</th>
+                        <th colspan="4">Транспортное средство</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 250px">Имя</th>
+                        <th style="width: 100px">Личный номер / УНП</th>
+                        <th style="width: 200px">Адрес</th>
+                        <th style="width: 100px">Марка и модель</th>
+                        <th style="width: 80px">Рег. знак</th>
+                        <th style="width: 120px">VIN / номер шасси (рамы)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="policy: ${policies}">
+                        <td></td>
+                        <td th:text="${policy.policyNum}"></td>
+                        <td th:text="${policy.ncompany}"></td>
+                        <td th:text="${policy.dateDistr}"></td>
+                        <td th:text="${policy.dateBeg}"></td>
+                        <td th:text="${policy.dateEnd}"></td>
+                        <td th:text="${policy.dateTerm}"></td>
+                        <td th:text="${policy.insuredId}"></td>
+                        <td th:text="${policy.insuredName}"></td>
+                        <td th:text="${policy.insuredAddress}"></td>
+                        <td th:text="${policy.vehPassport}"></td>
+                        <td th:text="${policy.vehSign}"></td>
+                        <td th:text="${policy.bodyNo}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>    
+</body>
+</html>

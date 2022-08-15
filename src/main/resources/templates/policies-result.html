@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о договорах страхования</title>
+    <!--link rel="stylesheet" href="../static/css/bootstrap.min.css"-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<h2>Информация о договорах страхования (внутреннего/внутреннего комплексного/пограничного)</h2>
+<table class="table table-bordered">
+    <thead class="thead-dark" style="vertical-align: middle">
+    <tr>
+        <th rowspan="2" style="width: 50px">Номер строки</th>
+        <th rowspan="2" style="width: 120px">Номер договора страхования</th>
+        <th rowspan="2" style="width: 130px">Страховая компания</th>
+        <th rowspan="2" style="width: 100px">Дата заключения</th>
+        <th rowspan="2" style="width: 100px">Дата начала действия</th>
+        <th rowspan="2" style="width: 100px">Дата окончания</th>
+        <th rowspan="2" style="width: 100px">Дата закрытия</th>
+        <th colspan="3">Страхователь</th>
+        <th colspan="4">Транспортное средство</th>
+    </tr>
+    <tr>
+        <th style="width: 250px">Имя</th>
+        <th style="width: 100px">Личный номер / УНП</th>
+        <th style="width: 200px">Адрес</th>
+        <th style="width: 100px">Марка и модель</th>
+        <th style="width: 80px">Рег. знак</th>
+        <th style="width: 120px">VIN / номер шасси (рамы)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="policy, iter: ${policies}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${policy.policyNum}"></td>
+        <td th:text="${policy.ncompany}"></td>
+        <td th:text="${policy.dateDistr}"></td>
+        <td th:text="${policy.dateBeg}"></td>
+        <td th:text="${policy.dateEnd}"></td>
+        <td th:text="${policy.dateTerm}"></td>
+        <td th:text="${policy.insuredName}"></td>
+        <td th:text="${policy.insuredId}"></td>
+        <td th:text="${policy.insuredAddress}"></td>
+        <td th:text="${policy.vehPassport}"></td>
+        <td th:text="${policy.vehSign}"></td>
+        <td th:text="${policy.bodyNo}"></td>
+    </tr>
+    </tbody>
+</table>
+<!--script>
+$('.table tbody tr').each(function(i) {
+var number = i + 1;
+$(this).find('td:first').text(number+".");
+});
+
+</script-->
+</body>
+</html>

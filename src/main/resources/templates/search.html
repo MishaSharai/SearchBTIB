@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск договоров страхования</title>
+    <!--link rel="stylesheet" href="../static/css/bootstrap.min.css"-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <a href="/index">Вернуться на главную страницу</a>
+        <form action="search" method="post">
+            <div class="row px-2 py-2" style="background-color: darkgray;">
+                <div class="col">
+                    <h6>Быстрый поиск</h6>
+                    <div class="row">
+                        <label>по номеру договора</label>
+                        <input class="form-control" id="policyNum" name="policyNum" placeholder="Номер договора" maxlength="20" th:value="${policyNum}">
+                    </div>
+                    <div class="row py-2">
+                        <label>по страхователю</label>
+                        <input class="form-control" id="insuredName" name="insuredName" placeholder="Страхователь" th:value="${insuredName}">
+                    </div>
+                    <div class="row">
+                        <label>по идентификатору страхователя</label>
+                        <input class="form-control" id="insuredId" name="insuredId" placeholder="Идентификатор" th:value="${insuredId}">
+                    </div>
+                    <div class="row py-2">
+                        <label>по рег. знаку ТС</label>
+                        <input class="form-control" id="vehSign" name="vehSign" placeholder="Регистрационный знак" th:value="${vehSign}">
+                    </div>
+                    <div class="row">
+                        <label>по VIN</label>
+                        <input class="form-control" id="bodyNo" name="bodyNo" placeholder="VIN" maxlength="17" th:value="${bodyNo}">
+                    </div>    
+                </div>
+                <div class="col">
+                    <h6>Расширенный поиск</h6>
+                    <textarea class="form-control" style="height: 220px; resize: none;" placeholder="Значения"></textarea>
+                </div>
+                <div class="col">
+                    <h6>Параметры поиска</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="radioGO" name="typeOfPolicy" checked value="GO" >
+                        <label class="form-check-label" for="radioGO">Договоры страхования</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="radioGC" name="typeOfPolicy" value="GC">
+                        <label class="form-check-label" for="radioGC">Зеленая карта</label>
+                    </div>
+                    <div class="form-check form-check-inline py-3">
+                        <input class="form-check-input" type="checkbox" id="checkCase" value="option3">
+                        <label class="form-check-label" for="checkCase">Страховой случай</label>
+                    </div>
+                    <div class="col-7">
+                        <label for="dateDistrStart">Период заключения с</label>
+                        <input class="form-control" type="date" id="dateDistrStart" name="dateDistrStart" min="2001-01-01" max="2099-12-31" th:value="${dateDistrStart}">
+                        <label for="dateDistrEnd">по</label>
+                        <input class="form-control" type="date" id="dateDistrEnd" name="dateDistrEnd" min="2001-01-01" max="2099-12-31" th:value="${dateDistrEnd}">
+                    </div>
+                </div>      
+            </div>
+            <div class="row py-3 text-center">
+                <div class="col">
+                    <button type="submit" class="btn btn-dark" style="width: 300px;">Поиск</button>
+                </div>
+            </div>
+            <div th:switch="${existPolicyNum}" class="row">
+                <div th:case="${true}">
+                    <label>По договору страхования: </label><a th:href="@{search/byPolicyNum(policy=${policyNum},
+                        dateDistrStart=${dateDistrStart}, dateDistrEnd=${dateDistrEnd})}" th:target="_blank">просмотреть информацию</a>
+                </div>
+                <div th:case="${false}">
+                    <label>По договору страхования: ничего не найдено.</label>
+                </div>
+            </div>
+            <div th:switch="${existInsuredName}" class="row">
+                <div th:case="${true}">
+                    <label>По страхователю: </label><a th:href="@{search/byInsuredName(name=${insuredName}, 
+                        dateDistrStart=${dateDistrStart}, dateDistrEnd=${dateDistrEnd})}" th:target="_blank">просмотреть информацию</a>
+                </div>
+                <div th:case="${false}">
+                    <label>По страхователю: ничего не найдено.</label>
+                </div>
+            </div>
+            <div th:switch="${existInsuredId}" class="row">
+                <div th:case="${true}">
+                    <label>По идентификатору страхователя: </label><a th:href="@{search/byInsuredId(value=${insuredId},
+                        dateDistrStart=${dateDistrStart}, dateDistrEnd=${dateDistrEnd})}" th:target="_blank">просмотреть информацию</a>
+                </div>
+                <div th:case="${false}">
+                    <label>По идентификатору страхователя: ничего не найдено.</label>
+                </div>
+            </div>
+            <div th:switch="${existVehSign}" class="row">
+                <div th:case="${true}">
+                    <label>По рег. знаку ТС: </label><a th:href="@{search/byVehSign(value=${vehSign},
+                        dateDistrStart=${dateDistrStart}, dateDistrEnd=${dateDistrEnd})}" th:target="_blank">просмотреть информацию</a>
+                </div>
+                <div th:case="${false}">
+                    <label>По рег. знаку ТС: ничего не найдено.</label>
+                </div>
+            </div>
+            <div th:switch="${existBodyNo}" class="row">
+                <div th:case="${true}">
+                    <label>По VIN ТС: </label><a th:href="@{search/byBodyNo(value=${bodyNo},
+                        dateDistrStart=${dateDistrStart}, dateDistrEnd=${dateDistrEnd})}" th:target="_blank">просмотреть информацию</a>
+                </div>
+                <div th:case="${false}">
+                    <label>По VIN ТС: ничего не найдено.</label>
+                </div>
+            </div>
+            <div></div>
+        </form>
+    </div>
+    <!--script type="text/javascript" src="js/jquery-3.6.0.min.js">
+        $(document).ready( function() {
+        $('#dateDistrEndId').val(new Date().toDateInputValue());
+        });​
+    </script-->
+    <script type="text/javascript">
+        var date = new Date;
+        var currentDate = date.toISOString().slice(0,10);
+        document.getElementById('dateDistrEnd').value = currentDate;
+    </script>
+</body>
+</html>

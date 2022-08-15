@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать глвый договор страхования</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--<link rel="stylesheet" href="css/style.css">-->
+</head>
+<body>
+<form action="create" method="post">
+    <h3>Введите следующие данные</h3>
+    <div class="createPolicy">
+        <label for="policyNum">Номер полиса:</label>
+        <input id="policyNum" type="text" name="policyNum" placeholder="серия, номер">
+        <label for="company">Компания:</label>
+        <input id="company" type="text" name="company" placeholder="код компании">
+        <label for="dateBeg">Дата начала действия:</label>
+        <input id="dateBeg" type="date" name="dateBeg">
+        <label for="period">Выбрать срок действия:</label>
+        <select id="period" name="period">
+            <option value="15">15 дней</option>
+            <option value="">1 месяц</option>
+            <option value="">2 месяца</option>
+            <option value="">3 месяца</option>
+            <option value="">4 месяца</option>
+            <option value="">5 месяцев</option>
+            <option value="">6 месяцев</option>
+            <option value="">7 месяцев</option>
+            <option value="">8 месяцев</option>
+            <option value="">9 месяцев</option>
+            <option value="">10 месяцев</option>
+            <option value="">11 месяцев</option>
+            <option value="">12 месяцев</option>
+        </select>
+        <label for="dateEnd">Дата окончания:</label>
+        <input id="dateEnd" type="date" name="dateEnd">
+        <label for="insuredId">Личный номер:</label>
+        <input id="insuredId" type="text" name="insuredId" placeholder="3011090A001PB0">
+        <label for="insuredName">Страхователь:</label>
+        <input id="insuredName" type="text" name="insuredName" placeholder="ФИО">
+        <label for="insuredAddress">Адрес страхователя:</label>
+        <input id="insuredAddress" type="text" name="insuredAddress" placeholder="адрес регистрации">
+        <label for="bodyNo">Идентификационный номер кузова(рамы/шасси):</label>
+        <input id="bodyNo" type="text" name="bodyNo" maxlength="17" placeholder="vin">
+        <label for="vehType">Тип ТС:</label>
+        <select id="vehType" name="vehType">
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="A3">A3</option>
+            <option value="A4">A4</option>
+            <option value="A5">A5</option>
+            <option value="A6">A6 - такси</option>
+        </select>
+        <label for="vehPassport">Марка и модель ТС:</label>
+        <input id="vehPassport" type="text" name="vehPassport">
+        <label for="vehSign">Регистрационный знак ТС:</label>
+        <input id="vehSign" type="text" name="vehSign" placeholder="1234AA7">
+    </div>
+    <br>
+    <button type="submit">Создать</button>
+</form>
+</body>
+</html>

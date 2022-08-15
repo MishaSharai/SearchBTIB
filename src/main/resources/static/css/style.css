@@ -1,0 +1,49 @@
+.createPolicy {
+
+}
+
+.createPolicy label {
+    display: block;
+}
+
+.createPolicy input {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.search {
+    float: left;
+    display: flex;
+    width: 90%;
+    height: 300px;
+    /*vertical-align: middle;*/
+}
+
+.search div h4 {
+    text-align: center;
+}
+
+.quick-search {
+    border: 1px solid;
+    padding: 10px;
+    width: 300px;
+}
+
+.extended-search {
+    padding: 10px;
+    width: 50%;
+    border: 1px solid;
+    padding: 10px;
+    
+    
+}
+
+.extended-search textarea {
+    width: 100%;
+    height: 80%;
+}
+
+.options-search {
+    border: 1px solid;
+    padding: 10px;
+}
